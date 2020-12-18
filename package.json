@@ -1,0 +1,18 @@
+{
+  "name": "puissancequatre",
+  "version": "1.0.0",
+  "description": "Jeu de puissance 4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.8",
+    "serve-favicon": "^2.5.0",
+    "shortid": "^2.2.16",
+    "socket.io": "^3.0.4"
+  }
+}
