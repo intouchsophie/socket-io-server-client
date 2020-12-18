@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>PUISSANCE 4</title>
+</head>
+
+<body>
+  <h1>PUISSANCE 4</h1>
+  <h2>Relevez le défi!</h2>
+  <ul id="list"></ul>
+  Nom du joueur:
+  <input id="player" type="text" name="player" onchange="test()" autofocus />
+  <button onclick="test()">add</button>
+
+  <!-- CREATION SOCKET -->
+  <script src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    const socket = io();
+    // écoute du socket news
+    socket.on('news', function (msg) {
+      document.getElementById('list').innerHTML += `<li>${msg}</li>`
+    });
+
+    socket.on('player', function (data) {
+      var socket = io.connect('localhost:3000')
+      console.log('data in player', data.value)
+      document.getElementById('list').innerHTML = `<li>${data.value}</li>`
+    });
+
+    function test() {
+
+      var input = document.getElementById('player')
+      console.log('input', input.value)
+      socket.emit('test', { value: input.value })
+    }
+  </script>
+
+  <!-- FIN CODE SOCKET -->
+</body>
+
+</html>
